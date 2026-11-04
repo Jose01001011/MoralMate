@@ -1,0 +1,254 @@
+[
+ {
+  "text": "I was admitted to hospital last week and missed the assignment. I have a medical certificate and need 5 more days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I had malaria and the doctor booked me off for three days. I attached the sick note. Can I get an extension of 3 days?",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My grandmother passed away and the funeral is this weekend in the north. I have the funeral programme as proof. I need one week.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My father died on Monday. I can provide the death certificate. Please may I have 7 days extension for the report.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I had surgery and was in hospital for four days, medical certificate available, requesting 5 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "doctor gave me a sick note for flu, need 2 days more for the assignment",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "There was a power outage in our area for two days before the deadline, I have the NamPower notice, requesting 2 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My laptop crashed the day before the deadline and the repair shop gave me a receipt. Can I please have 2 extra days?",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Moodle was down when I tried to submit and I have screenshots of the error. I need one day.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I was sick with a fever and have a doctor's note. Could I submit 3 days late?",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Funeral of my uncle in Oshakati, I have the funeral notice, asking for 4 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I injured my hand in an accident, the clinic gave me a medical certificate, I need 6 days to type the assignment.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Good day Sir, I was hospitalised with appendicitis. Attached is my medical certificate. I kindly request an extension of five days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "my mom passed away last week, i have the death certificate, can i get a week extension",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I tested positive for covid and was told to isolate, I have the clinic letter. Requesting 5 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "The network was down at the residence and I have proof from IT services, need 1 day.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Dear lecturer, due to a medical emergency I was at the hospital. I have documentation from the doctor and request 4 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I was booked off sick by the doctor for 2 days, certificate attached, need 2 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Load shedding meant no electricity during the deadline week, I have the outage schedule as evidence, requesting 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My brother died in a car accident, I will bring the death certificate, I need 7 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I have a medical certificate for a migraine that kept me in bed, asking for 2 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Hospital visit with my sick child, the doctor wrote a letter, can I get 3 days?",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Kindly grant me 3 days, I was ill and have a sick note from the campus clinic.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I attended my cousin's funeral, funeral programme available, requesting 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My computer got a virus and I lost my work, I have the technician's report, need 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Good morning, I was involved in a car accident and have the police report and hospital records. I need 7 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I had food poisoning and the doctor gave me a sick note, need 2 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I work night shifts and my employer's letter confirms extra shifts this week, I need 2 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I was hospitalised for ten days with pneumonia, medical certificate attached, I need 10 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I was on an official university sports trip and have the letter from the sports office, requesting 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Can I get an extension? I just need more time.",
+  "label": "REFER"
+ },
+ {
+  "text": "I forgot about the assignment, can I submit next week?",
+  "label": "REFER"
+ },
+ {
+  "text": "I was busy with other assignments and need 5 more days.",
+  "label": "REFER"
+ },
+ {
+  "text": "The deadline passed yesterday and I did not submit, can I still submit?",
+  "label": "REFER"
+ },
+ {
+  "text": "I need two weeks extra because I started late.",
+  "label": "REFER"
+ },
+ {
+  "text": "I was sick but I do not have a sick note, can I get 3 days?",
+  "label": "REFER"
+ },
+ {
+  "text": "please extend the deadline for everyone, the assignment is too long",
+  "label": "REFER"
+ },
+ {
+  "text": "I had a wedding to attend this weekend, need 4 days",
+  "label": "REFER"
+ },
+ {
+  "text": "I was travelling and did not have time, requesting a week.",
+  "label": "REFER"
+ },
+ {
+  "text": "My laptop is slow so I need 3 more days.",
+  "label": "REFER"
+ },
+ {
+  "text": "I missed the deadline last week because I was confused about the date.",
+  "label": "REFER"
+ },
+ {
+  "text": "Can I have an extension of 14 days for personal reasons?",
+  "label": "REFER"
+ },
+ {
+  "text": "I need more time, i'm not done yet",
+  "label": "REFER"
+ },
+ {
+  "text": "I didn't know the assignment was due, please give me extra days",
+  "label": "REFER"
+ },
+ {
+  "text": "My group members did not do their part so I need an extension of a week.",
+  "label": "REFER"
+ },
+ {
+  "text": "Internet was bad but I have no proof, can I get 2 days?",
+  "label": "REFER"
+ },
+ {
+  "text": "I want to submit 10 days late because I had a lot of work at my job.",
+  "label": "REFER"
+ },
+ {
+  "text": "The assignment was due three days ago and I was sick, I do not have a certificate.",
+  "label": "REFER"
+ },
+ {
+  "text": "I would like a month extension to improve my work.",
+  "label": "REFER"
+ },
+ {
+  "text": "I was at a party and lost track of time, can I get 1 day?",
+  "label": "REFER"
+ },
+ {
+  "text": "Hi, extension please",
+  "label": "REFER"
+ },
+ {
+  "text": "My family had visitors and I could not work, need 5 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "Is it possible to get an extension, I have other tests.",
+  "label": "REFER"
+ },
+ {
+  "text": "I need 3 weeks to finish the project.",
+  "label": "REFER"
+ },
+ {
+  "text": "The deadline was on Friday and it's now Monday, I'd like to submit now.",
+  "label": "REFER"
+ },
+ {
+  "text": "I feel the deadline is unfair, I want 7 more days.",
+  "label": "REFER"
+ },
+ {
+  "text": "I couldn't get a doctor's note but I was ill, I need 4 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "I had transport problems, I don't have any proof, need 2 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "My phone broke so I couldn't check Moodle, need a week.",
+  "label": "REFER"
+ },
+ {
+  "text": "Request extension of 2 days, reason: personal.",
+  "label": "REFER"
+ },
+ {
+  "text": "I was sick and have a certificate but I need 3 weeks to catch up.",
+  "label": "REFER"
+ },
+ {
+  "text": "There was a funeral but I have no proof and need 10 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "I have a doctor's note from a month ago, can I get 5 days for this assignment?",
+  "label": "REFER"
+ }
+]

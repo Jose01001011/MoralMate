@@ -1,0 +1,82 @@
+[
+ {
+  "text": "I was admitted at Katutura hospital and have my medical certificate, I need four days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My aunt passed away, I have the funeral programme, need 5 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I just want more time, I'm behind.",
+  "label": "REFER"
+ },
+ {
+  "text": "Power failure in my area, NamPower notice attached, requesting 1 day.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Deadline passed last week, I was busy.",
+  "label": "REFER"
+ },
+ {
+  "text": "I had flu but no sick note, need 2 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "Doctor booked me off with a certificate for 3 days, please grant 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Need 2 weeks extra, too many assignments.",
+  "label": "REFER"
+ },
+ {
+  "text": "Moodle crashed during upload, screenshot attached, 1 day please.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I had a wedding and family obligations, need 3 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "My son was sick and in hospital, I have the hospital letter, requesting 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Can I have an extension?",
+  "label": "REFER"
+ },
+ {
+  "text": "Funeral of my grandfather in Rundu, I will bring proof, 6 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "My laptop was stolen, I have a police case number, need 3 days.",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "I'm requesting 20 days because I was sick, I have a certificate.",
+  "label": "REFER"
+ },
+ {
+  "text": "i was sick no note sorry, can i submit tomorrow",
+  "label": "REFER"
+ },
+ {
+  "text": "I was hospitalised, certificate available, need 3 days",
+  "label": "PROVISIONAL"
+ },
+ {
+  "text": "Personal reasons, need a week.",
+  "label": "REFER"
+ },
+ {
+  "text": "My internet was off, can't prove it, 2 days.",
+  "label": "REFER"
+ },
+ {
+  "text": "I attended a university debate tournament with a letter from the faculty, need 2 days.",
+  "label": "PROVISIONAL"
+ }
+]

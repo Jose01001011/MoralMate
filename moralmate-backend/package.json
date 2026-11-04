@@ -1,0 +1,31 @@
+{
+  "name": "moralmate-backend",
+  "version": "1.0.0",
+  "description": "MoralMate: human-centred AI student support triage API (NUST HCA820S)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js",
+    "test": "node --test test/moralmate.test.js",
+    "evaluate:compare": "node scripts/compare-engines.js",
+    "evaluate:fairness": "node scripts/fairness-eval.js",
+    "evaluate": "node scripts/compare-engines.js && node scripts/fairness-eval.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "runtime/*",
+      "evaluation/*"
+    ]
+  }
+}

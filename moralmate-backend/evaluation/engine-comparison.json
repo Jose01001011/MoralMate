@@ -1,0 +1,758 @@
+{
+  "generatedAt": "2026-11-04T12:18:00.310Z",
+  "trainingSize": 63,
+  "heldOut": {
+    "n": 20,
+    "accuracy": {
+      "rules": 0.95,
+      "learned": 0.95,
+      "combined": 0.95
+    },
+    "agreementRate": 0.9,
+    "matrix": {
+      "bothCorrect": 18,
+      "onlyRulesCorrect": 1,
+      "onlyLearnedCorrect": 1,
+      "bothWrong": 0
+    },
+    "falseProvisional": {
+      "rules": 0,
+      "learned": 1,
+      "combined": 0
+    },
+    "disagreements": [
+      {
+        "text": "My internet was off, can't prove it, 2 days.",
+        "expected": "REFER",
+        "features": {
+          "reason": "technical",
+          "documentation": "no",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R5",
+        "learned": "PROVISIONAL",
+        "confidence": 0.701,
+        "influentialTerms": [
+          "off",
+          "my",
+          "days"
+        ]
+      },
+      {
+        "text": "I attended a university debate tournament with a letter from the faculty, need 2 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "university",
+          "documentation": "yes",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "PROVISIONAL",
+        "confidence": 0.957,
+        "influentialTerms": [
+          "letter",
+          "attended",
+          "university",
+          "days"
+        ]
+      }
+    ],
+    "rows": [
+      {
+        "text": "I was admitted at Katutura hospital and have my medical certificate, I need four days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 4,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 1,
+        "influentialTerms": [
+          "medical",
+          "medical certificate",
+          "hospital",
+          "certificate need"
+        ]
+      },
+      {
+        "text": "My aunt passed away, I have the funeral programme, need 5 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "bereavement",
+          "documentation": "yes",
+          "days": 5,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 0.999,
+        "influentialTerms": [
+          "funeral",
+          "away",
+          "programme",
+          "passed away"
+        ]
+      },
+      {
+        "text": "I just want more time, I'm behind.",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": null,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "REFER",
+        "confidence": 1,
+        "influentialTerms": [
+          "time",
+          "want",
+          "more time",
+          "more"
+        ]
+      },
+      {
+        "text": "Power failure in my area, NamPower notice attached, requesting 1 day.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 1,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "PROVISIONAL",
+        "confidence": 1,
+        "influentialTerms": [
+          "in",
+          "attached",
+          "requesting",
+          "notice"
+        ]
+      },
+      {
+        "text": "Deadline passed last week, I was busy.",
+        "expected": "REFER",
+        "features": {
+          "reason": "personal",
+          "documentation": "unknown",
+          "days": null,
+          "timing": "after"
+        },
+        "rules": "REFER",
+        "ruleId": "R2",
+        "learned": "REFER",
+        "confidence": 0.834,
+        "influentialTerms": [
+          "busy",
+          "deadline passed",
+          "deadline",
+          "week"
+        ]
+      },
+      {
+        "text": "I had flu but no sick note, need 2 days.",
+        "expected": "REFER",
+        "features": {
+          "reason": "medical",
+          "documentation": "no",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R5",
+        "learned": "REFER",
+        "confidence": 0.688,
+        "influentialTerms": [
+          "but",
+          "but no",
+          "no",
+          "need"
+        ]
+      },
+      {
+        "text": "Doctor booked me off with a certificate for 3 days, please grant 3 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 1,
+        "influentialTerms": [
+          "doctor",
+          "me",
+          "certificate",
+          "booked"
+        ]
+      },
+      {
+        "text": "Need 2 weeks extra, too many assignments.",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": 14,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "REFER",
+        "confidence": 0.997,
+        "influentialTerms": [
+          "weeks",
+          "need weeks",
+          "too",
+          "assignments"
+        ]
+      },
+      {
+        "text": "Moodle crashed during upload, screenshot attached, 1 day please.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 1,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "PROVISIONAL",
+        "confidence": 0.906,
+        "influentialTerms": [
+          "attached",
+          "crashed",
+          "during"
+        ]
+      },
+      {
+        "text": "I had a wedding and family obligations, need 3 days.",
+        "expected": "REFER",
+        "features": {
+          "reason": "personal",
+          "documentation": "unknown",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "REFER",
+        "confidence": 0.753,
+        "influentialTerms": [
+          "wedding",
+          "family",
+          "need"
+        ]
+      },
+      {
+        "text": "My son was sick and in hospital, I have the hospital letter, requesting 3 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 1,
+        "influentialTerms": [
+          "in",
+          "requesting days",
+          "hospital",
+          "letter"
+        ]
+      },
+      {
+        "text": "Can I have an extension?",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": null,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "REFER",
+        "confidence": 0.825,
+        "influentialTerms": [
+          "an extension",
+          "extension",
+          "an"
+        ]
+      },
+      {
+        "text": "Funeral of my grandfather in Rundu, I will bring proof, 6 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "bereavement",
+          "documentation": "yes",
+          "days": 6,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 0.982,
+        "influentialTerms": [
+          "in",
+          "funeral",
+          "bring",
+          "funeral of"
+        ]
+      },
+      {
+        "text": "My laptop was stolen, I have a police case number, need 3 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "PROVISIONAL",
+        "confidence": 0.793,
+        "influentialTerms": [
+          "police",
+          "my",
+          "days",
+          "need days"
+        ]
+      },
+      {
+        "text": "I'm requesting 20 days because I was sick, I have a certificate.",
+        "expected": "REFER",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 20,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R4",
+        "learned": "REFER",
+        "confidence": 0.578,
+        "influentialTerms": [
+          "because",
+          "i'm",
+          "sick certificate"
+        ]
+      },
+      {
+        "text": "i was sick no note sorry, can i submit tomorrow",
+        "expected": "REFER",
+        "features": {
+          "reason": "medical",
+          "documentation": "no",
+          "days": 1,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R5",
+        "learned": "REFER",
+        "confidence": 0.721,
+        "influentialTerms": [
+          "submit",
+          "no"
+        ]
+      },
+      {
+        "text": "I was hospitalised, certificate available, need 3 days",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "PROVISIONAL",
+        "confidence": 0.984,
+        "influentialTerms": [
+          "certificate",
+          "hospitalised",
+          "available",
+          "certificate available"
+        ]
+      },
+      {
+        "text": "Personal reasons, need a week.",
+        "expected": "REFER",
+        "features": {
+          "reason": "personal",
+          "documentation": "unknown",
+          "days": 7,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "REFER",
+        "confidence": 0.984,
+        "influentialTerms": [
+          "personal",
+          "reasons",
+          "personal reasons",
+          "need week"
+        ]
+      },
+      {
+        "text": "My internet was off, can't prove it, 2 days.",
+        "expected": "REFER",
+        "features": {
+          "reason": "technical",
+          "documentation": "no",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R5",
+        "learned": "PROVISIONAL",
+        "confidence": 0.701,
+        "influentialTerms": [
+          "off",
+          "my",
+          "days"
+        ]
+      },
+      {
+        "text": "I attended a university debate tournament with a letter from the faculty, need 2 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "university",
+          "documentation": "yes",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "PROVISIONAL",
+        "confidence": 0.957,
+        "influentialTerms": [
+          "letter",
+          "attended",
+          "university",
+          "days"
+        ]
+      }
+    ]
+  },
+  "leaveOneOut": {
+    "n": 63,
+    "accuracy": {
+      "rules": 0.9365079365079365,
+      "learned": 0.8412698412698413,
+      "combined": 0.873015873015873
+    },
+    "agreementRate": 0.7777777777777778,
+    "matrix": {
+      "bothCorrect": 49,
+      "onlyRulesCorrect": 10,
+      "onlyLearnedCorrect": 4,
+      "bothWrong": 0
+    },
+    "falseProvisional": {
+      "rules": 1,
+      "learned": 5,
+      "combined": 0
+    },
+    "disagreements": [
+      {
+        "text": "I was admitted to hospital last week and missed the assignment. I have a medical certificate and need 5 more days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 5,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "REFER",
+        "confidence": 0.551,
+        "influentialTerms": [
+          "need more",
+          "more days",
+          "more",
+          "assignment"
+        ]
+      },
+      {
+        "text": "Moodle was down when I tried to submit and I have screenshots of the error. I need one day.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 1,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "REFER",
+        "confidence": 0.962,
+        "influentialTerms": [
+          "submit",
+          "to submit",
+          "moodle",
+          "to"
+        ]
+      },
+      {
+        "text": "I was sick with a fever and have a doctor's note. Could I submit 3 days late?",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "REFER",
+        "confidence": 0.995,
+        "influentialTerms": [
+          "doctor's",
+          "submit",
+          "late",
+          "doctor's note"
+        ]
+      },
+      {
+        "text": "The network was down at the residence and I have proof from IT services, need 1 day.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 1,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "REFER",
+        "confidence": 0.891,
+        "influentialTerms": [
+          "proof",
+          "it",
+          "at",
+          "need"
+        ]
+      },
+      {
+        "text": "My computer got a virus and I lost my work, I have the technician's report, need 3 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "technical",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R7",
+        "learned": "REFER",
+        "confidence": 0.594,
+        "influentialTerms": [
+          "lost",
+          "work",
+          "my work",
+          "need"
+        ]
+      },
+      {
+        "text": "I work night shifts and my employer's letter confirms extra shifts this week, I need 2 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "personal",
+          "documentation": "yes",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "PROVISIONAL",
+        "confidence": 0.641,
+        "influentialTerms": [
+          "letter",
+          "my",
+          "days",
+          "need days"
+        ]
+      },
+      {
+        "text": "I was hospitalised for ten days with pneumonia, medical certificate attached, I need 10 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 10,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R4",
+        "learned": "PROVISIONAL",
+        "confidence": 0.989,
+        "influentialTerms": [
+          "medical",
+          "medical certificate",
+          "attached",
+          "certificate"
+        ]
+      },
+      {
+        "text": "I was on an official university sports trip and have the letter from the sports office, requesting 3 days.",
+        "expected": "PROVISIONAL",
+        "features": {
+          "reason": "university",
+          "documentation": "yes",
+          "days": 3,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "PROVISIONAL",
+        "confidence": 0.975,
+        "influentialTerms": [
+          "requesting days",
+          "letter",
+          "requesting",
+          "days"
+        ]
+      },
+      {
+        "text": "I had a wedding to attend this weekend, need 4 days",
+        "expected": "REFER",
+        "features": {
+          "reason": "personal",
+          "documentation": "unknown",
+          "days": 4,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R8",
+        "learned": "PROVISIONAL",
+        "confidence": 0.757,
+        "influentialTerms": [
+          "need days",
+          "weekend",
+          "days"
+        ]
+      },
+      {
+        "text": "I missed the deadline last week because I was confused about the date.",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": null,
+          "timing": "after"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "PROVISIONAL",
+        "confidence": 0.694,
+        "influentialTerms": [
+          "last",
+          "last week",
+          "missed",
+          "week"
+        ]
+      },
+      {
+        "text": "I didn't know the assignment was due, please give me extra days",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": null,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "PROVISIONAL",
+        "confidence": 0.843,
+        "influentialTerms": [
+          "me",
+          "extra days",
+          "days",
+          "extra"
+        ]
+      },
+      {
+        "text": "I had transport problems, I don't have any proof, need 2 days.",
+        "expected": "REFER",
+        "features": {
+          "reason": "personal",
+          "documentation": "no",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R5",
+        "learned": "PROVISIONAL",
+        "confidence": 0.645,
+        "influentialTerms": [
+          "need days",
+          "days"
+        ]
+      },
+      {
+        "text": "Request extension of 2 days, reason: personal.",
+        "expected": "REFER",
+        "features": {
+          "reason": "unknown",
+          "documentation": "unknown",
+          "days": 2,
+          "timing": "unknown"
+        },
+        "rules": "REFER",
+        "ruleId": "R1",
+        "learned": "PROVISIONAL",
+        "confidence": 0.553,
+        "influentialTerms": [
+          "request",
+          "days",
+          "of days"
+        ]
+      },
+      {
+        "text": "I have a doctor's note from a month ago, can I get 5 days for this assignment?",
+        "expected": "REFER",
+        "features": {
+          "reason": "medical",
+          "documentation": "yes",
+          "days": 5,
+          "timing": "unknown"
+        },
+        "rules": "PROVISIONAL",
+        "ruleId": "R6",
+        "learned": "REFER",
+        "confidence": 0.812,
+        "influentialTerms": [
+          "month",
+          "ago",
+          "assignment",
+          "doctor's"
+        ]
+      }
+    ]
+  }
+}
