@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const cors = require("cors");
 const { evaluateMessage, ENGINE_VERSION } = require("./engine");
@@ -32,24 +34,66 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-// Single-shot triage (kept for backwards compatibility).
-app.post("/api/chat", (req, res) => {
-  const { message } = req.body || {};
+// Stateless chat with optional history (Gemini integration by Jose).
+// The rules classify first; only routine academic and administrative
+// questions may get a Gemini reply. Everything else goes to people.
+const ROUTINE = new Set(["academic", "administrative"]);
+
+function validHistory(history) {
+  return Array.isArray(history) && history.length <= 8 && history.every(item =>
+    item && ["user", "assistant"].includes(item.role) && typeof item.text === "string" && item.text.length <= 2000
+  );
+}
+
+app.post("/api/chat", async (req, res) => {
+  const { message, history = [] } = req.body || {};
   if (!validMessage(message)) {
-    return res.status(400).json({ error: "Please type a message (2000 characters max)." });
+    return res.status(400).json({ success: false, error: "Please type a message (2000 characters max)." });
   }
-  const result = evaluateMessage(message);
+  if (!validHistory(history)) {
+    return res.status(400).json({ success: false, error: "Invalid conversation history." });
+  }
+
+  const result = evaluateMessage(message.trim());
   const { auditTerms, ...publicResult } = result;
-  store.audit({
+  const logChat = (source) => store.audit({
     type: result.escalate ? "ESCALATION" : "TRIAGE",
-    channel: "single-shot",
+    channel: "chat",
     category: result.category,
     zone: result.zone,
     matchedCategories: result.matchedCategories,
     messageFingerprint: store.fingerprint(message),
-    engine: ENGINE_VERSION
+    engine: ENGINE_VERSION,
+    source
   });
-  res.json({ success: true, ...publicResult });
+
+  if (result.escalate) {
+    logChat("human_escalation");
+    return res.json({ success: true, ...publicResult, source: "human_escalation" });
+  }
+
+  if (!ROUTINE.has(result.category)) {
+    logChat("rules");
+    return res.json({ success: true, ...publicResult, source: "rules" });
+  }
+
+  // Earlier turns are re-checked before anything is shared with Gemini.
+  const historyFlagged = history.some(item => item.role === "user" && evaluateMessage(item.text).escalate);
+  if (historyFlagged) {
+    logChat("human_escalation");
+    return res.json({
+      success: true,
+      ...publicResult,
+      escalate: true,
+      response: "Something earlier in this chat needs a real person, so I won't reply automatically. Please reach out to NUST Student Services through the official channels.",
+      source: "human_escalation"
+    });
+  }
+
+  const ai = await llm.replyWithLLM(message.trim(), history);
+  logChat(ai ? "gemini" : "rules");
+  if (!ai) return res.json({ success: true, ...publicResult, source: "rules" });
+  res.json({ success: true, ...publicResult, response: ai.text, escalate: false, source: "gemini" });
 });
 
 // Conversational agent: one turn of a multi-turn conversation.
@@ -199,7 +243,7 @@ app.get("/api/staff/audit", (req, res) => {
 if (require.main === module) {
   app.listen(PORT, () => {
     console.log(`MoralMate API running on http://localhost:${PORT}`);
-    console.log(`Language model: ${llm.isEnabled() ? `enabled (${llm.MODEL})` : "disabled (scripted agent only)"}`);
+    console.log(`Gemini: ${llm.isEnabled() ? `enabled (${llm.MODEL})` : "disabled (set GEMINI_API_KEY in .env to enable)"}`);
   });
 }
 

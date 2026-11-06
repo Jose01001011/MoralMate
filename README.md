@@ -23,11 +23,11 @@ npm run dev          # app on http://localhost:5173
 Other backend commands:
 
 ```
-npm test             # 24 automated tests (guard, rules, agent, API, accountability)
+npm test             # 26 automated tests (guard, rules, agent, Gemini safeguards, API, accountability)
 npm run evaluate     # regenerates evaluation/engine-comparison.md and evaluation/fairness-report.md
 ```
 
-The optional language model is off by default. To enable it, copy `moralmate-backend/.env.example` to `.env`, set `LLM_API_KEY`, and start the backend with the variable exported. Without a key the scripted agent runs on its own.
+Gemini is off by default. To enable it, copy `moralmate-backend/.env.example` to `.env` and set `GEMINI_API_KEY`. With a key, Gemini writes the replies to routine academic and administrative questions (and follow-ups to them) and words clarifying questions. MoralMate's own rules still classify every message first, and sensitive messages never reach Gemini. Without a key the scripted agent runs on its own.
 
 ## How it is built
 
@@ -36,7 +36,8 @@ moralmate-backend/
   src/guard.js                 Escalation guard: zero-automation zone, runs first on every turn
   src/engine.js                Top-down intake triage (privacy, academic, administrative, general)
   src/agent.js                 Conversational agent: clarifying questions, slot filling, session lock
-  src/llm.js                   Optional language model adapter (can only add escalation)
+  src/gemini.js                Gemini client and MoralMate system instruction
+  src/llm.js                   Gemini safeguards: routine-only replies, history re-check, output re-check, fallback
   src/extension/features.js    Extracts reason, documentation, days, timing from free text
   src/extension/rules.js       Top-down decision rules R1 to R8
   src/extension/learned.js     Bottom-up naive Bayes classifier trained on labelled examples
@@ -68,8 +69,8 @@ docs/screenshots/              Screens from an end-to-end run
 | Fairness check | `data/fairness-set.json` (6 requests in 6 styles); `npm run evaluate:fairness` |
 | Accountability | Audit log, request history, named reviewer on every decision, contest flow |
 | Cultural and linguistic awareness | Code-switched and non-standard English test cases in the fairness check; constant "Talk to a person" option and no requirement to disclose sensitive details; multilingual interface planned as future work |
-| AI agent architecture | `agent.js` multi-turn dialogue with clarification, optional language model, escalation enforced every turn |
+| AI agent architecture | `agent.js` multi-turn dialogue with clarification and Gemini replies for routine questions; `/api/chat` stateless chat with history; escalation enforced every turn |
 
 ## Known limitations
 
-The training and test data are synthetic and small (63 and 20 examples). The extraction vocabulary was improved after the first fairness run and then re-tested on the same set, so the final rules result on that set is optimistic. The interface is English only; multilingual support (for example Oshiwambo, Afrikaans and Otjiherero) is planned future work, and the phrase tables in `src/i18n.js` on both sides are structured for it. Staff pages have no authentication. Escalation contacts must be verified against official NUST sources. Sessions are held in memory and are lost when the backend restarts.
+The training and test data are synthetic and small (63 and 20 examples). The extraction vocabulary was improved after the first fairness run and then re-tested on the same set, so the final rules result on that set is optimistic. The interface is English only; multilingual support (for example Oshiwambo, Afrikaans and Otjiherero) is planned future work, and the phrase tables in `src/i18n.js` on both sides are structured for it. When Gemini is enabled, routine student messages are sent to Google's service, which a real deployment would need to cover in its privacy notice. Staff pages have no authentication. Escalation contacts must be verified against official NUST sources. Sessions are held in memory and are lost when the backend restarts.

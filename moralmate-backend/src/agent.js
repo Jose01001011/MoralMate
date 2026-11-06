@@ -32,7 +32,8 @@ function newSession(language = "en", studentRef = null) {
     awaiting: null,
     extensionText: [],
     lastAssessment: null,
-    turns: 0
+    turns: 0,
+    history: []
   };
   sessions.set(s.id, s);
   return s;
@@ -233,6 +234,8 @@ async function handleTurn({ sessionId, message, language, studentRef }) {
   let llmUsed = false;
 
   const finish = reply => {
+    session.history.push({ role: "user", text: message.slice(0, 2000) }, { role: "assistant", text: String(reply.text || "").slice(0, 2000) });
+    session.history = session.history.slice(-8);
     store.audit({
       type: reply.kind === "escalation" ? "ESCALATION" : "AGENT_TURN",
       sessionId: session.id,
@@ -326,6 +329,24 @@ async function handleTurn({ sessionId, message, language, studentRef }) {
 
   if (result.intent === "extension") return finish(startExtension(session, message));
 
+  if (result.category === "general" && session.lastRoutineCategory && llm.isEnabled()) {
+    // A follow-up to a routine question: Gemini answers using the chat history.
+    const follow = await llm.replyWithLLM(message, session.history);
+    if (follow) {
+      llmUsed = true;
+      session.stage = "intake";
+      return finish({
+        kind: "info",
+        category: session.lastRoutineCategory,
+        text: follow.text,
+        explanation: `This looks like a follow-up to your ${session.lastRoutineCategory} question, so Gemini (${follow.model}) answered using the chat so far. It can't make decisions or submit anything for you.`,
+        principles: ["Transparency", "Autonomy"],
+        options: ["Talk to a person"],
+        source: "gemini"
+      });
+    }
+  }
+
   if (result.category === "general") {
     if (session.clarifications >= MAX_CLARIFICATIONS) {
       session.stage = "intake";
@@ -341,11 +362,11 @@ async function handleTurn({ sessionId, message, language, studentRef }) {
       if (["safety", "wellbeing", "misconduct"].includes(ai.category)) {
         session.stage = "escalated";
         session.escalatedCategory = ai.category;
-        return finish({ ...escalationReply(session, { category: ai.category, zone: ai.category === "safety" ? "crisis" : "human-only" }), explanation: "The language model thought this might be sensitive, so it's going to a person to be safe." });
+        return finish({ ...escalationReply(session, { category: ai.category, zone: ai.category === "safety" ? "crisis" : "human-only" }), explanation: "Gemini thought this might be sensitive, so it's going to a person to be safe." });
       }
       if (ai.category === "extension") return finish(startExtension(session, message));
       if (ai.question) {
-        return finish({ kind: "clarify", text: ai.question, explanation: `A language model (${ai.model}) helped word this question. It can't make any decisions.`, options: ["An academic matter", "An administrative matter", "Talk to a person"] });
+        return finish({ kind: "clarify", text: ai.question, explanation: `Gemini (${ai.model}) helped word this question. It can't make any decisions.`, options: ["An academic matter", "An administrative matter", "Talk to a person"] });
       }
     }
 
@@ -360,14 +381,23 @@ async function handleTurn({ sessionId, message, language, studentRef }) {
   }
 
   session.stage = "intake";
+  session.lastRoutineCategory = result.category;
+
+  // Routine academic or administrative question: Gemini may write the reply.
+  // MoralMate's rules have already classified it; Gemini only words the answer.
+  const ai = await llm.replyWithLLM(message, session.history);
+  if (ai) llmUsed = true;
   return finish({
     kind: "info",
     category: result.category,
-    text: result.response,
-    explanation: result.explanation,
+    text: ai ? ai.text : result.response,
+    explanation: ai
+      ? `${result.explanation} This reply was written by Gemini (${ai.model}). It can't make decisions or submit anything for you.`
+      : result.explanation,
     principles: result.principles,
     options: result.options,
-    ethicalConflict: result.ethicalConflict
+    ethicalConflict: result.ethicalConflict,
+    source: ai ? "gemini" : "rules"
   });
 }
 

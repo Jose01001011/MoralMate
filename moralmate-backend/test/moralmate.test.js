@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 process.env.MORALMATE_DATA_DIR = fs.mkdtempSync(path.join(os.tmpdir(), "moralmate-test-"));
-delete process.env.LLM_API_KEY;
+delete process.env.GEMINI_API_KEY;
 
 const { checkEscalation } = require("../src/guard");
 const { evaluateMessage } = require("../src/engine");
@@ -106,16 +106,47 @@ test("student can always ask for a person", async () => {
   assert.strictEqual(o.reply.kind, "handoff");
 });
 
-test("language model can add escalation but never remove it", async () => {
-  process.env.LLM_API_KEY = "test";
+test("Gemini can add escalation but never remove it", async () => {
+  process.env.GEMINI_API_KEY = "test";
   const llm = require("../src/llm");
-  const fakeFetch = async () => ({ ok: true, json: async () => ({ content: [{ text: '{"category":"wellbeing","question":"How are you?"}' }] }) });
-  const r = await llm.clarifyWithLLM("things are bad lately", { fetchImpl: fakeFetch });
+  const r = await llm.clarifyWithLLM("things are bad lately", { generate: async () => '{"category":"wellbeing","question":"How are you?"}' });
   assert.strictEqual(r.category, "wellbeing");
-  const bad = async () => ({ ok: true, json: async () => ({ content: [{ text: '{"category":"other","question":"Do you want to kill yourself?"}' }] }) });
-  const r2 = await llm.clarifyWithLLM("hmm", { fetchImpl: bad });
-  assert.strictEqual(r2.question, null); // unsafe model text is discarded
-  delete process.env.LLM_API_KEY;
+  const r2 = await llm.clarifyWithLLM("hmm", { generate: async () => '{"category":"other","question":"Do you want to kill yourself?"}' });
+  assert.strictEqual(r2.question, null);
+  delete process.env.GEMINI_API_KEY;
+});
+
+test("Gemini replies to routine questions, but unsafe or failed replies fall back to the rules", async () => {
+  process.env.GEMINI_API_KEY = "test";
+  const llm = require("../src/llm");
+  const ok = await llm.replyWithLLM("How do I register for a module?", [], { generate: async () => "You can register through the student portal." });
+  assert.strictEqual(ok.text, "You can register through the student portal.");
+  const unsafe = await llm.replyWithLLM("question", [], { generate: async () => "Maybe you should hurt yourself." });
+  assert.strictEqual(unsafe, null);
+  const broken = await llm.replyWithLLM("question", [], { generate: async () => { throw new Error("503 UNAVAILABLE"); } });
+  assert.strictEqual(broken, null);
+  let called = false;
+  const flagged = await llm.replyWithLLM("question", [{ role: "user", text: "I feel hopeless" }], { generate: async () => { called = true; return "hi"; } });
+  assert.strictEqual(flagged, null);
+  assert.strictEqual(called, false);
+  delete process.env.GEMINI_API_KEY;
+});
+
+test("API: /api/chat never sends sensitive messages or flagged history to Gemini", async () => {
+  const server = app.listen(0);
+  const base = `http://localhost:${server.address().port}`;
+  const post = body => fetch(base + "/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) }).then(r => r.json());
+  const sensitive = await post({ message: "my lecturer keeps harassing me" });
+  assert.strictEqual(sensitive.escalate, true);
+  assert.strictEqual(sensitive.source, "human_escalation");
+  const history = await post({ message: "when are exam results out?", history: [{ role: "user", text: "I want to end my life" }] });
+  assert.strictEqual(history.escalate, true);
+  const routine = await post({ message: "when are exam results out?" });
+  assert.strictEqual(routine.escalate, false);
+  assert.strictEqual(routine.source, "rules");
+  const bad = await post({ message: "hi", history: "nope" });
+  assert.strictEqual(bad.success, false);
+  server.close();
 });
 
 // ---------- API: accountability and contest ----------
