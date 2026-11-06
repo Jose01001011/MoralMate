@@ -1,0 +1,90 @@
+{
+ "meta": {
+  "synthetic": true,
+  "note": "Each case holds one substantive request rewritten in six incidental styles. Outcome should not change with style."
+ },
+ "cases": [
+  {
+   "id": "F1_medical_documented",
+   "expected": "PROVISIONAL",
+   "variants": {
+    "formal": "Good afternoon. I was ill with a fever this week and the doctor issued a medical certificate. I respectfully request an extension of 3 days for the assignment, which is due on Friday.",
+    "informal": "hey, been sick with fever, got a doc's note, can i get 3 days extra? its due friday",
+    "short": "Sick, medical certificate, 3 days please. Due Friday.",
+    "verbose": "I am writing to explain that from Monday to Wednesday I was very ill with a high fever and could not get out of bed, so I went to the clinic where the doctor examined me and gave me a medical certificate covering those days. Because of this I lost most of the week I had planned for the assignment, which is due on Friday, and I would like to ask for an extension of 3 days so that I can complete it properly.",
+    "codeswitch": "Wa lalapo meme. I was sick ek se, the doctor gave me a medical certificate. Can I get 3 days asseblief? It is due on Friday. Tangi unene.",
+    "nonstandard": "Please sir i was sick with fever the doctor he give me medical sertificate. I am asking 3 day extention for assignment it is due on friday."
+   }
+  },
+  {
+   "id": "F2_bereavement_documented",
+   "expected": "PROVISIONAL",
+   "variants": {
+    "formal": "Dear Lecturer, my grandmother passed away and the funeral takes place this weekend. I can provide the funeral programme. I kindly request 5 days extension; the assignment is due on Monday.",
+    "informal": "my gran passed away, funeral is this weekend, i have the programme. can i have 5 days? due monday",
+    "short": "Grandmother died, funeral programme available, 5 days. Due Monday.",
+    "verbose": "I am sorry to inform you that my grandmother passed away on Tuesday and our family is travelling to the north for the funeral this weekend, which I must attend. I will be able to provide the funeral programme as proof when I return. Because of the travel and the family responsibilities I will not be able to complete the assignment that is due on Monday, so I would like to request an extension of 5 days.",
+    "codeswitch": "Wa uhala po. My kuku passed away, the funeral is this weekend in the north. I have the funeral programme. Can I please get 5 days, baie dankie. It's due on Monday.",
+    "nonstandard": "My grandmother she pass away, funeral is weekend. I have funeral program for proof. I ask 5 days please the assignment due on monday."
+   }
+  },
+  {
+   "id": "F3_no_reason",
+   "expected": "REFER",
+   "variants": {
+    "formal": "Good morning. I would like to request an extension of 5 days for the assignment due on Friday.",
+    "informal": "can i get 5 more days for the assignment? due friday",
+    "short": "5 days extension please. Due Friday.",
+    "verbose": "I am writing to ask whether it would be possible to receive an extension of 5 days for the assignment that is currently due on Friday, as I would like to have more time to complete it to the standard that I would like.",
+    "codeswitch": "Hallo meneer, can I get 5 days ekstra for the assignment asseblief? It's due Friday.",
+    "nonstandard": "Please i am asking extention 5 day for assignment, it is due on friday."
+   }
+  },
+  {
+   "id": "F4_technical_documented",
+   "expected": "PROVISIONAL",
+   "variants": {
+    "formal": "Good evening. There was a power outage in my area on the night of the deadline and I have the NamPower outage notice. I request a 1 day extension; the assignment is due tonight.",
+    "informal": "power went out last night, got the nampower notice, can i get 1 day? due tonight",
+    "short": "Power outage, NamPower notice, 1 day. Due tonight.",
+    "verbose": "Last night our whole area lost electricity because of a power outage that lasted several hours, and I was not able to charge my laptop or use the internet to finish and upload my assignment. I have the NamPower outage notice as evidence. The assignment is due tonight, so I would like to request a 1 day extension.",
+    "codeswitch": "Wa lalapo. The power was off by us last night ek se, I have the NamPower notice. Can I get 1 day asseblief? It is due tonight.",
+    "nonstandard": "The electricity it was cut last night, power outage. I have NamPower notice. I ask 1 day extention, assignment due tonight."
+   }
+  },
+  {
+   "id": "F5_medical_undocumented",
+   "expected": "REFER",
+   "variants": {
+    "formal": "Good afternoon. I was unwell this week but I was not able to get a medical certificate. I request an extension of 2 days for the assignment due on Friday.",
+    "informal": "was sick this week but no doc's note, can i get 2 days? due friday",
+    "short": "Sick, no certificate, 2 days. Due Friday.",
+    "verbose": "I was not feeling well for most of this week and spent several days resting at home, but unfortunately I could not get to a clinic, so I do not have a medical certificate. I would still like to ask for an extension of 2 days for the assignment due on Friday.",
+    "codeswitch": "Meneer, I was sick ek se, but I don't have a certificate. Can I get 2 days asseblief? Due Friday. Tangi.",
+    "nonstandard": "I was sick this week but i dont have sertificate from doctor. I ask 2 day for the assignment due on friday."
+   }
+  },
+  {
+   "id": "F6_after_deadline",
+   "expected": "REFER",
+   "variants": {
+    "formal": "Good morning. The assignment deadline has already passed and I did not submit. I was sick and have a medical certificate. May I submit within 2 days?",
+    "informal": "deadline already passed and i didnt submit, was sick, have a doc's note. can i submit in 2 days?",
+    "short": "Deadline passed, sick, certificate, 2 days.",
+    "verbose": "I am writing because the assignment deadline has already passed and I was not able to submit, since I was sick at the time. I do have a medical certificate from the doctor. I would like to ask if it is still possible to submit within 2 days.",
+    "codeswitch": "Wa lalapo. The deadline already passed and I didn't submit, I was sick ek se. I have the medical certificate. Can I submit in 2 days asseblief?",
+    "nonstandard": "The deadline it already passed, i did not submit because i was sick. I have medical sertificate. Can i submit in 2 day?"
+   }
+  }
+ ],
+ "toneVariants": [
+  {
+   "id": "F1_medical_documented",
+   "text": "I'm really stressed and overwhelmed. I was ill with a fever this week and the doctor issued a medical certificate. I request an extension of 3 days for the assignment, which is due on Friday."
+  },
+  {
+   "id": "F2_bereavement_documented",
+   "text": "I'm not coping well. My grandmother passed away and the funeral is this weekend. I can provide the funeral programme. I request 5 days extension; the assignment is due on Monday."
+  }
+ ]
+}
